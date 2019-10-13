@@ -6,7 +6,6 @@ from django.http import HttpResponse,Http404
 from .models import Image,Location,Category,Editor
 # import datetime as dt
 from django.core.exceptions import ObjectDoesNotExist
-import pyperclip
 
 
 
