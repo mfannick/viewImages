@@ -22,10 +22,7 @@ class Category(models.Model):
         return self.categoryName
     def saveCategory(self):
         self.save()
-    # @classmethod
-    # def searchImageByCategory(cls,search_term):
-    #     imageCategory = cls.objects.filter(categoryName__contains=search_term)
-    #     return imageCategory
+    
     
 
 class Location(models.Model):
