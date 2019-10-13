@@ -1,0 +1,109 @@
+<link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Sacramento&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+{%extends 'base.html'%}
+{%block content%}
+{{block.super}}
+
+
+<div class="container-fluid" style="position: relative ; margin-top: 300px">
+    <h1 style="font-family: 'Sacramento', cursive;text-align: center;margin-bottom: 100px" >Enjoy !!</h1>
+    
+
+    <div class="row">
+        {% for imageItem in images%}
+
+        <!----------------------------------------------------------------------------------------->
+
+        <img data-toggle="modal" data-target="#{{imageItem.id}}" style="margin-left: 50px;margin-bottom: 50px" src="{{imageItem.image.url}}"
+            class="img-responsive" alt="Image">
+        <br>
+        <br>
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="{{imageItem.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" style="padding-right: 500px">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"
+                            style="font-family: 'Philosopher', sans-serif;font-size: 15px">{{imageItem.imageName|title}}
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+
+                        <img style="border-radius: 300px" src="{{imageItem.image.url}}" alt="image"> <br><br>
+                        <p style="font-size: 25px;font-family: 'Sacramento', cursive">
+                            Description:{{imageItem.imageDescription}}</p>
+                        <p style="font-size: 25px;font-family: 'Sacramento', cursive">
+                            Category:{{imageItem.categoryF}}</p>
+                        <p style="font-size: 25px;font-family: 'Sacramento', cursive">
+                            Location:{{imageItem.locationF}}</p>
+                        <textarea cols="58" style="font-size: 25px;font-family: 'Sacramento', cursive;color: violet"
+                            id="imageUrl">
+                            {{imageItem.imageUrl}}</textarea><br><br>
+                        <button class="btn btn-secondary" onclick="copy()" id="button" style="font-family: 'Sacramento', cursive;font-size: 25px">Copy text</button>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-family: 'Sacramento', cursive;font-size: 25px">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!----------------------------------------------------------------------------------------->
+
+
+        {%endfor%}
+    </div>
+
+
+
+
+</div>
+
+{%endblock%}
+{% block scripts %}
+<script>
+ 
+
+    function copy() {
+        /* Get the text field */
+        var copyText = document.getElementById("imageUrl");
+
+        /* Select the text field */
+        copyText.select();
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+
+        /* Alert the copied text */
+        alert("Copied the text: " + copyText.value);
+    }
+    
+</script>
+{% endblock %}
