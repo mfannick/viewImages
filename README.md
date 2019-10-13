@@ -13,6 +13,7 @@
 
      -Python
      -Django 
+     -javascript
    ### BDD
    <img src='./media/imagesUpload/Screenshot from 2019-10-13 21-13-04.png' alt='image'>
 
