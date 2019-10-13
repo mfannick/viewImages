@@ -20,7 +20,6 @@
 
    ### Contact information
     
-    Phone number=+250786409154
     Email:mfannick1@gmail.com
 
    ### MIT License and Copyright information
