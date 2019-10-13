@@ -15,7 +15,7 @@ def homePage(request):
     images = Image.getImages()
     yes='yes'
     return render(request,'homePage.html',{"images":images,'yes':yes})
-})
+
 def searchImageByCategory(request):
     if 'image' in request.GET and request.GET['image']:
         search_term=request.GET.get('image')
@@ -26,8 +26,6 @@ def searchImageByCategory(request):
     else:
         message='no search yet'
         return render(request,'search.html',{'message':message})
-
-
 
 def imageDescription(request,imageId):
     try:
