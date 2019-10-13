@@ -55,11 +55,11 @@ class ImageTestClass(TestCase):
         # new Image
         self.newImage=Image(imageName='tech',imageDescription='tech',postedTime='2014-04-04',locationF=self.newLocation,editorF=self.annick,categoryF=self.newCategory)
         self.newImage.save()
-    def tearDown(self):
-        Editor.objects.all().delete()
-        Category.objects.all().delete()
-        Location.objects.all().delete()
-        Image.objects.all().delete()
+    # def tearDown(self):
+    #     Editor.objects.all().delete()
+    #     Category.objects.all().delete()
+    #     Location.objects.all().delete()
+    #     Image.objects.all().delete()
         
         # testing the getting of the image
     def testGetImages(self):
@@ -71,8 +71,18 @@ class ImageTestClass(TestCase):
         date = dt.datetime.strptime(test_date, '%Y-%m-%d').date()
         imagesByDate = Image.imageGetByDate(date)
         self.assertTrue(len(imagesByDate) == 0)
-    def testGetImageById(self):
-        id = '1'
-        imagesById = Image.imageGetById()
-        self.assertTrue(len(imagesById) == 0)
+    # def testGetImageById(self):
+    #     imagesById = Image.imageGetById()
+    #     self.assertTrue(len(imagesById) == 0)
+
+    def testDeleteImage(self):
+        '''
+        test_delete_contact to test if we can remove a contact from our contact list
+        '''
+        self.newImage.save()
+        testImage=Image('mfannick1','kirikufifi@gmail.com') 
+        testImage.save()
+
+        self.newImage.deleteImage()# Deleting a image object
+        self.assertEqual(len(testImage),1)
 

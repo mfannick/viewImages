@@ -52,20 +52,23 @@ class Image(models.Model):
     def getImages(cls):
         images=cls.objects.all()
         return images
-    # @classmethod
-    # def imageGetByDate(cls,date):
-    #     imagesDate=cls.objects.filter(postedTime__date=date)
-    #     return imagesDate
+    @classmethod
+    def imageGetByDate(cls,date):
+        imagesDate=cls.objects.filter(postedTime__date=date)
+        return imagesDate
     
-    # @classmethod
-    # def imageGetByCategory(cls,category):
-    #     category=Category.get(id)
-    #     imagesCat=cls.objects.filter(category=category)
-    #     return imagesCat
+    @classmethod
+    def imageGetById(cls):
+        imageId=Image.objects.get(id)
+        return imageId
     @classmethod
     def searchImageByCategory(cls,search_term):
         imageCategory = cls.objects.filter(categoryF__categoryName__icontains=search_term)
         return imageCategory
+    @classmethod
+    def delete_contact(cls):
+
+        Image.remove()
 
 
 
