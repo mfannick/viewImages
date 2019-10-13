@@ -1,0 +1,1 @@
+web: gunicorn viewImages.wsgi --log-file -
