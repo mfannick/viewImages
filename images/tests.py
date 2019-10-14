@@ -72,8 +72,11 @@ class ImageTestClass(TestCase):
         imagesByDate = Image.imageGetByDate(date)
         self.assertTrue(len(imagesByDate) == 0)
     def testGetImageById(self):
-        imagesById = Image.imageGetById()
-        self.assertTrue(len(imagesById) == 0)
+        imagesById = Image.imageGetById(1)
+        self.assertEqual(imagesById.id ,1)
+    def testSearch(self):
+        images = Image.searchImageByCategory('search_term')
+        self.assertFalse(len(images)>0)
 
     def testDeleteImage(self):
         '''

@@ -54,8 +54,8 @@ class Image(models.Model):
         return imagesDate
     
     @classmethod
-    def imageGetById(cls):
-        imageId=Image.objects.get(id)
+    def imageGetById(cls,id):
+        imageId=Image.objects.get(id=id)
         return imageId
     @classmethod
     def searchImageByCategory(cls,search_term):
